@@ -6,9 +6,57 @@ to find middleground between being able to add anything by developers
 for testing and exploration but once it goes into the master repo it
 should have gone through a sanity check that goes beyond just "can it
 compile".
- 
-. Create Jira based on template
-. Create Pull-request with changes
+
+Goals for the process is to:
+
+. Avoid unnecessary churn in failed builds because of target platform changes
+. Avoid adding dependencies to the target platform that are bad or unnecessary
+. Be able to trace why and when changes were made to the target platform
+
+Suggestion:
+
+. <<Create Jira outlining the request>>
+. Create Pull-request with changes, test it locally add link to jira
 . Send email to jbosstools-dev@lists.jboss.org requesting feedback
 . Await approvals from build, affected team leads and project lead(s).
   In case of urgency build + one project lead is considered ok, but should be the exception.
+. Apply the pull-request
+
+== Create Jira outlining the request 
+
+Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
+
+Type of bug: 
+    
+_Feature-Request_ if this change is introducing or removing a new feature/set of plugins
+    
+_Bug_ if this is just to fix/update existing plugins 
+
+Component: _target-platform_ + releated components if applicable (i.e. _gwt_, and none if global used dependency)
+
+Assignee: Leave it to its default setting
+
+Fix version: Set it to the corresponding JBoss Tools release or set of releases this is needed/intended for.
+
+Description:
+
+Provide enough detail for those checking the issue and those wanting to try out the suggested changes have enough info to do so
+without navigating too many jiras/repos etc. If you do not know the answer to these put "Unknown" as answer and if not applicable put "N/A"
+
+_Reason_: Why is the request needed, typical reasons are: "Required by new feature described in JBIDE-xyz", "Eclipse releasetrain update from Kepler M5 to M6" or "Removal because it conflicts with JBTIS and give bug describe at JBIDE-xyz"
+
+_License and owner_: Which license are these features available under and who are the maintainer ? i.e. EPL, Google.
+
+_Owner and Original repository_: which repository are the plugins/features from ? i.e. http://dl.google.com/eclipse/plugin/4.2
+
+_JBoss Mirrored repository_: Which repository on http://downloads.jboss.org/jbosstools/updates/requirements/ are the original repostiory mirrored to or should be mirrored to, i.e. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
+
+_Source bundle availability_: Does the repository include source bundles for these or are the source code available elsewhere ?
+
+_Affected projects_: Which projects are this known to effect ? Inside and outside of JBoss Tools core
+
+_Type of dependency_: is this just for testing (incl. in TP, but not in distribution), central-only (incl. on central but not to be used by our components directly), distribution (incl. in installer/associated updatesite)
+
+_List of bundles added/removed_: Can be a link to a pull-request or pasted diff for .target; if not available list the plugins in sorted order so easier to browse/compare.
+
+
