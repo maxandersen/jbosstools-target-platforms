@@ -15,7 +15,7 @@ Goals for the process is to:
 
 Suggestion:
 
-. <<Create Jira outlining the request>>
+. <<create-jira-outlining-the-request,Create jira>>
 . Create Pull-request with changes, test it locally add link to jira
 . Send email to jbosstools-dev@lists.jboss.org requesting feedback
 . Await approvals from build, affected team leads and project lead(s).
@@ -26,19 +26,19 @@ Suggestion:
 
 Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
 
-Type of bug: 
+*Type of bug*: 
     
 _Feature-Request_ if this change is introducing or removing a new feature/set of plugins
     
 _Bug_ if this is just to fix/update existing plugins 
 
-Component: _target-platform_ + releated components if applicable (i.e. _gwt_, and none if global used dependency)
+*Component*: _target-platform_ + releated components if applicable (i.e. _gwt_, and none if global used dependency)
 
-Assignee: Leave it to its default setting
+*Assignee*: Leave it to its default setting
 
-Fix version: Set it to the corresponding JBoss Tools release or set of releases this is needed/intended for.
+*Fix version*: Set it to the corresponding JBoss Tools release or set of releases this is needed/intended for.
 
-Description:
+*Description*:
 
 Provide enough detail for those checking the issue and those wanting to try out the suggested changes have enough info to do so
 without navigating too many jiras/repos etc. If you do not know the answer to these put "Unknown" as answer and if not applicable put "N/A"
