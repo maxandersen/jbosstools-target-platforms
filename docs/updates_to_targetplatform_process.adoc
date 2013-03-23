@@ -1,0 +1,9 @@
+= Proposal for updates to targetplatforms
+
+We need to be careful about our targetplatform not growing or change
+too uncontrollable. Below is a suggestion for a process that attempts
+to find middleground between being able to add anything by developers
+for testing and exploration but once it goes into the master repo it
+should have gone through a sanity check that goes beyond just "can it
+compile".
+
