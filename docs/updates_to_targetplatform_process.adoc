@@ -7,12 +7,8 @@ for testing and exploration but once it goes into the master repo it
 should have gone through a sanity check that goes beyond just "can it
 compile".
  
-Step 1: Create Jira based on template
-
-Step 2: Create Pull-request with changes
-
-Step 3: Send email to jbosstools-dev@lists.jboss.org requesting feedback
-
-Step 4: Await approvals from build, affected team leads and project lead(s).
-        
-In case of urgency build + one project lead is considered ok, but should be the exception.
+. Create Jira based on template
+. Create Pull-request with changes
+. Send email to jbosstools-dev@lists.jboss.org requesting feedback
+. Await approvals from build, affected team leads and project lead(s).
+  In case of urgency build + one project lead is considered ok, but should be the exception.
