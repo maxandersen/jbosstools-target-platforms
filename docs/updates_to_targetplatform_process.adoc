@@ -40,6 +40,18 @@ _Bug_ if this is just to fix/update existing plugins
 
 *Description*:
 
+Template:
+
+  Reason: 
+  License and owner: 
+  Original repository: http://
+  JBoss Mirrored repository: http://downloads.jboss.org/jbosstools/updates/requirements/propername
+  Source:
+  Affected projects:
+  Required in devstudio: Yes|No
+  Type of dependency: testing|central-only|distribution
+  List of bundles added/removed: 
+
 Provide enough detail for those checking the issue and those wanting to try out the suggested changes have enough info to do so
 without navigating too many jiras/repos etc. If you do not know the answer to these put "Unknown" as answer and if not applicable put "N/A"
 
@@ -61,19 +73,6 @@ _Type of dependency_: is this just for testing (incl. in TP, but not in distribu
 
 _List of bundles added/removed_: Can be a link to a pull-request or pasted diff for .target; if not available list the plugins in sorted order so easier to browse/compare.
 
-Template to copy for easy creation:
-
-  Reason: 
-  License and owner: 
-  Original repository: http://
-  JBoss Mirrored repository: http://downloads.jboss.org/jbosstools/updates/requirements/propername
-  Source:
-  Affected projects:
-  Required in devstudio: Yes|No
-  Type of dependency: testing|central-only|distribution
-  List of bundles added/removed: 
-
-
 == Create Pull request and test
 
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
@@ -87,15 +86,16 @@ Edit `jbosstools-multiple-target`, update an existing location or add as necessa
 
 [source,xml]
 ----
-<!-- Only in JBT: GWT/GPE -->
-    <location includeAllPlatforms="false" includeMode="planner" type="InstallableUnit" includeSource="true">
-      <repository location="http://download.jboss.org/jbosstools/updates/requirements/gwt/3.2.0.v201302131858-rel-r42/"/>
-      <unit id="com.google.gdt.eclipse.suite.e42.feature.feature.group" version="3.2.0.v201302131858-rel-r42"/>
-      <unit id="com.google.gwt.eclipse.sdkbundle.feature.feature.group" version="2.5.0"/>
+ <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="com.android.ide.eclipse.ddms.feature.group" version="21.1.0.v201302060044-569685"/>
+      <unit id="com.android.ide.eclipse.adt.feature.group" version="21.1.0.v201302060044-569685"/>
+      <repository location="https://dl-ssl.google.com/android/eclipse"/>
     </location>
 ----
 
+Note: 
 If you do not have a mirrored download.jboss.org location use the direct url - importance is to get a .target file that can be easily tested.
+
 
 Now build the target platform:
 
@@ -104,12 +104,21 @@ Now build the target platform:
 If this is the first time you build the target platform it will take a while (can be hours dependening on your network connection),
 but if have built or used the target platform before you should be done within in minutes.
 
-Once this is built you can test it in your build by running:
+Once this is built you can test it in your component build by running:
 
- $ mvn verify -Dtpc.version=4.30.5.Alpha3-SNAPSHOT
+ $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.30.5.Alpha3-SNAPSHOT 
 
-where the `tpc.version` is the version listed in the `pom.xml` file of the target platform.
+where the `tpc.version` is the version listed in the `pom.xml` file of the target platform and 'tpc.targetKind' is set to 'multiple' since the default ('unified') will not work when the target platform is not yet built and published publically.
 
+If everything is building and it is possible to use the functionallity needed by the fix go ahead and open a pull request.
 
+== Send mail for feedback
 
+Send email to jbosstools-dev@lists.jboss.org requesting feedback.
+
+Have the mail list PR and Jira and link/text on how to try it out.
+
+== Await feedback 
+
+TBD: how/when/criteria to put into master.
 
