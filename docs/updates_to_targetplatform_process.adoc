@@ -73,6 +73,19 @@ _Type of dependency_: is this just for testing (incl. in TP, but not in distribu
 
 _List of bundles added/removed_: Can be a link to a pull-request or pasted diff for .target; if not available list the plugins in sorted order so easier to browse/compare.
 
+=== Requirements that are not available in a p2 repository
+
+In case your requirement is not available in a p2 repository (i.e. only available as maven artifacts since it is not a p2 nor osgi artifact) we'll need at bit more details
+added.
+
+_non-p2 repository_: which repository are they located in (i.e. Maven central or jboss repository - please include the exact url you want them from)
+_non-p2 id's_: what are the id's from this repository, in case of Maven it is the GAV (Group, Artefact, Version)
+
+   non-p2 repository:
+   non-p2 id's:
+
+At the moment of writing we don't have an "orbit" to put these in - awaiting the first TP request to work out those details.
+
 == Create Pull request and test
 
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
